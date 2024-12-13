@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.9"  # Specify your Python version
+env:
+  global:
+    - MONGO_URI=mongodb+srv://harry:Sachdeva@cluster1.b02ct.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1
+    - TELEGRAM_BOT_TOKEN=7206133437:AAEZdHkDW4TSvR7lmfJb4FMFCJgOqzKvTW4
+    - ADMIN_USER_ID=7855020275
+install:
+  - pip install -r requirements.txt
+  - g++ -o nuclear raja.cpp -std=c++11 -pthread  # Install Python dependencies
+before_script:
+  - travis_wait 3000  # Extend timeout to prevent early termination
+script:
+  - python raja.py  # Run the script
+  
